@@ -14,6 +14,12 @@ interface PageProps {
     }>
 }
 
+export async function generateStaticParams() {
+    return restaurants.map((restaurant) => ({
+        id: restaurant.id,
+    }))
+}
+
 export default async function RestaurantPage({ params }: PageProps) {
     const { id } = await params
     const restaurant = restaurants.find((r) => r.id === id)
